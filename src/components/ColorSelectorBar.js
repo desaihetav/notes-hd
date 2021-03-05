@@ -4,7 +4,13 @@ export default function ColorSelectorBar({
   setColor,
   noteItemID,
 }) {
-  const colors = ["pink-100", "purple-100", "green-100", "yellow-100", "white"];
+  const colors = [
+    "bg-pink-100",
+    "bg-purple-100",
+    "bg-green-100",
+    "bg-yellow-100",
+    "bg-white",
+  ];
 
   const updateColor = (colorItem) => {
     if (noteItemID) {
@@ -26,7 +32,7 @@ export default function ColorSelectorBar({
     <div className="flex">
       {colors.map((colorItem) => (
         <div
-          className={`w-6 h-6 rounded-full cursor-pointer mr-2 border border-gray-300 bg-${colorItem}`}
+          className={`w-6 h-6 rounded-full cursor-pointer mr-2 border border-gray-300 ${colorItem}`}
           onClick={() => updateColor(colorItem)}
         ></div>
       ))}

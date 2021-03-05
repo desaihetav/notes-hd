@@ -54,9 +54,7 @@ export default function NoteCard({ noteItem, allNotes, setAllNotes, allTags }) {
 
   return (
     <div
-      className={`flex group text-gray-800 flex-col w-full p-4 hover:shadow-mdfull focus-within:shadow-mdfull rounded-xl bg-${
-        noteItem.color
-      } ${noteItem.color !== "white" ? `border-${noteItem.color}` : ""}`}
+      className={`flex group text-gray-800 flex-col w-full p-4 hover:shadow-mdfull focus-within:shadow-mdfull rounded-xl ${noteItem.color}`}
     >
       <div className="flex justify-between items-center">
         <div

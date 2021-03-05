@@ -9,7 +9,7 @@ export default function NewNote({ allNotes, setAllNotes, allTags }) {
   const [isCurrentPinned, setIsCurrentPinned] = useState(false);
   const [currentTitle, setCurrentTitle] = useState("");
   const [currentContent, setCurrentContent] = useState("");
-  const [currentColor, setCurrentColor] = useState("white");
+  const [currentColor, setCurrentColor] = useState("bg-white");
   const [currentTag, setCurrentTag] = useState("No Tag");
 
   const clearCurrent = () => {
@@ -51,7 +51,7 @@ export default function NewNote({ allNotes, setAllNotes, allTags }) {
 
   return (
     <div
-      className={`w-full max-w-lg shadow-mdfull rounded-xl py-3 px-6 bg-${currentColor}`}
+      className={`w-full max-w-lg shadow-mdfull rounded-xl py-3 px-6 ${currentColor}`}
       onFocus={() => setIsInputActive(true)}
     >
       {isInputActive ? (
