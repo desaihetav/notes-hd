@@ -11,7 +11,7 @@ export default function OtherNotes({
       <h2 className="font-bold mt-10 text-gray-800 tracking-wider">OTHERS</h2>
       {filteredNotes.filter((noteItem) => !noteItem.isPinned).length !==
       0 ? null : (
-        <span className="mr-auto my-4 font-medium">No Unpinned Notes</span>
+        <p className="mr-auto my-4 font-medium">No Unpinned Notes</p>
       )}
       <GridContainer>
         {filteredNotes

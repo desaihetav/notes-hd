@@ -1,12 +1,32 @@
 import { useState } from "react";
-export default function Filter({ allTags, currentFilter, setCurrentFilter }) {
+export default function Filter({
+  allTags,
+  setAllTags,
+  currentFilter,
+  setCurrentFilter,
+}) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [newTag, setNewTag] = useState("");
   const toggleDropdown = () => setIsDropdownOpen((val) => !val);
   const updateFilter = (filter) => {
     setCurrentFilter(filter);
     toggleDropdown();
   };
-  const allFilters = ["All Notes", ...allTags];
+
+  const removeFilter = (filter) => {
+    let allTagsUpdated = allTags.filter((tag) => tag !== filter);
+    setAllTags(allTagsUpdated);
+  };
+
+  const addNewTag = () => {
+    if (!allTags.find((tag) => tag === newTag)) {
+      let allTagsUpdated = [...allTags, newTag];
+      setAllTags(allTagsUpdated);
+    }
+    setNewTag("");
+  };
+
+  const allFilters = ["All Notes", "No Tag", ...allTags];
   return (
     <div class="relative inline-block text-left w-max">
       <div>
@@ -47,14 +67,38 @@ export default function Filter({ allTags, currentFilter, setCurrentFilter }) {
           aria-labelledby="options-menu"
         >
           {allFilters.map((filter) => (
-            <button
-              class="block text-left px-4 w-full py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-gray-900"
-              role="menuitem"
-              onClick={() => updateFilter(filter)}
-            >
-              {filter}
-            </button>
+            <div className="flex hover:bg-blue-50">
+              <button
+                class="block text-left px-4 w-full py-2 text-sm text-gray-700  hover:text-gray-900"
+                role="menuitem"
+                onClick={() => updateFilter(filter)}
+              >
+                {filter}
+              </button>
+              <button
+                className="px-2 m-2 rounded-full hover:bg-blue-100 bg-blue-50"
+                onClick={() => removeFilter(filter)}
+              >
+                x
+              </button>
+            </div>
           ))}
+
+          <div class="flex text-left w-full px-4 py-2 text-sm text-gray-700  hover:text-gray-900">
+            <input
+              className="p-2 bg-gray-50 rounded-md -ml-2 mr-auto"
+              placeholder="Add new tag"
+              value={newTag}
+              onChange={(e) => setNewTag(e.target.value)}
+              onKeyDown={(e) => (e.key === "Enter" ? addNewTag() : null)}
+            />
+            <button
+              className="px-2 -mr-2 my-auto text-xl w-7 h-7 rounded-full hover:bg-blue-100 bg-blue-50"
+              onClick={addNewTag}
+            >
+              +
+            </button>
+          </div>
         </div>
       </div>
     </div>

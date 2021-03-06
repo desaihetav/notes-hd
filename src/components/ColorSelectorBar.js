@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useSetLocalStorage } from "../hooks";
+
 export default function ColorSelectorBar({
   allNotes,
   setAllNotes,
@@ -11,6 +14,7 @@ export default function ColorSelectorBar({
     "bg-yellow-100",
     "bg-white",
   ];
+  useSetLocalStorage("allNotes", allNotes);
 
   const updateColor = (colorItem) => {
     if (noteItemID) {
@@ -22,7 +26,6 @@ export default function ColorSelectorBar({
         }
       });
       setAllNotes(allNotesUpdated);
-      localStorage.setItem("allNotes", JSON.stringify(allNotesUpdated));
     } else {
       setColor(colorItem);
     }

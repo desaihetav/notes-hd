@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 } from "uuid";
 import { ColorSelectorBar, TagSelector } from "./index";
+import { useSetLocalStorage } from "../hooks";
 import bookmark from "../assets/bookmark.svg";
 import bookmark_border from "../assets/bookmark_border.svg";
 
@@ -11,13 +12,14 @@ export default function NewNote({ allNotes, setAllNotes, allTags }) {
   const [currentContent, setCurrentContent] = useState("");
   const [currentColor, setCurrentColor] = useState("bg-white");
   const [currentTag, setCurrentTag] = useState("No Tag");
+  useSetLocalStorage("allNotes", allNotes);
 
   const clearCurrent = () => {
     setIsInputActive(false);
     setIsCurrentPinned(false);
     setCurrentTitle("");
     setCurrentContent("");
-    setCurrentColor("white");
+    setCurrentColor("bg-white");
     setCurrentTag("No Tag");
   };
 
@@ -36,7 +38,6 @@ export default function NewNote({ allNotes, setAllNotes, allTags }) {
         },
       ];
       setAllNotes(allNotesUpdated);
-      localStorage.setItem("allNotes", JSON.stringify(allNotesUpdated));
       clearCurrent();
     } else {
       alert("You cannot add empty note!");

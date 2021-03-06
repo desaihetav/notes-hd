@@ -3,6 +3,7 @@ import { Filter } from "./index";
 
 export default function Header({
   allTags,
+  setAllTags,
   currentFilter,
   setCurrentFilter,
   searchText,
@@ -32,6 +33,7 @@ export default function Header({
         <div className="lg:ml-auto">
           <Filter
             allTags={allTags}
+            setAllTags={setAllTags}
             currentFilter={currentFilter}
             setCurrentFilter={setCurrentFilter}
           />

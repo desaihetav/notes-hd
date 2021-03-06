@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useSetLocalStorage } from "../hooks";
+
 export default function TagSelector({
   allTags,
   currentTag,
@@ -8,7 +10,10 @@ export default function TagSelector({
   noteItemID,
 }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  useSetLocalStorage("allNotes", allNotes);
+
   const toggleDropdown = () => setIsDropdownOpen((val) => !val);
+
   const updateTag = (tag) => {
     if (noteItemID) {
       let allNotesUpdated = allNotes.map((note) => {
@@ -19,7 +24,6 @@ export default function TagSelector({
         }
       });
       setAllNotes(allNotesUpdated);
-      localStorage.setItem("allNotes", JSON.stringify(allNotesUpdated));
       toggleDropdown();
     } else {
       setCurrentTag(tag);

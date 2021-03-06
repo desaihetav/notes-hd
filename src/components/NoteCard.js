@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSetLocalStorage } from "../hooks";
 import { ColorSelectorBar, TagSelector } from "./index";
 import trash from "../assets/trash.svg";
 import bookmark from "../assets/bookmark.svg";
@@ -9,6 +10,7 @@ export default function NoteCard({ noteItem, allNotes, setAllNotes, allTags }) {
   const [noteContent, setNoteContent] = useState(noteItem.content);
   const noteItemID = noteItem.id;
   let isSaveBtnEnabled = false;
+  useSetLocalStorage("allNotes", allNotes);
 
   const toggleNotePin = (e) => {
     let allNotesUpdated = allNotes.map((note) => {
@@ -19,7 +21,6 @@ export default function NoteCard({ noteItem, allNotes, setAllNotes, allTags }) {
       }
     });
     setAllNotes(allNotesUpdated);
-    localStorage.setItem("allNotes", JSON.stringify(allNotesUpdated));
   };
 
   const updateNote = () => {
@@ -33,13 +34,11 @@ export default function NoteCard({ noteItem, allNotes, setAllNotes, allTags }) {
       }
     });
     setAllNotes(allNotesUpdated);
-    localStorage.setItem("allNotes", JSON.stringify(allNotesUpdated));
   };
 
   const deleteNote = () => {
     let allNotesUpdated = allNotes.filter((note) => note.id !== noteItem.id);
     setAllNotes(allNotesUpdated);
-    localStorage.setItem("allNotes", JSON.stringify(allNotesUpdated));
   };
 
   if (noteItem.title !== noteTitle || noteItem.content !== noteContent) {
@@ -94,7 +93,7 @@ export default function NoteCard({ noteItem, allNotes, setAllNotes, allTags }) {
         <div className="flex items-center justify-end w-full mt-2">
           <img
             onClick={deleteNote}
-            className={`mr-auto p-2 -ml-2 cursor-pointer rounded-full hover:bg-blue-50`}
+            className={`mr-auto w-9 h-9 p-2 -ml-2 cursor-pointer rounded-full hover:bg-blue-50`}
             src={trash}
           />
           <TagSelector
