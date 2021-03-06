@@ -11,7 +11,8 @@ export default function Footer() {
         <img src={github} className="mr-1 w-4 h-4" />
         <a
           className="hover:underline font-medium"
-          href="https://www.github.com/desaihetav/keep-clone"
+          href="https://www.github.com/desaihetav/notes-hd"
+          target="_blank"
         >
           / desaihetav / notes-hd
         </a>
