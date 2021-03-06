@@ -56,7 +56,7 @@ export default function Filter({
       </div>
 
       <div
-        class={`origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 ${
+        class={`absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 ${
           isDropdownOpen ? "block" : "hidden"
         }`}
       >
@@ -83,21 +83,14 @@ export default function Filter({
               </button>
             </div>
           ))}
-
-          <div class="flex text-left w-full px-4 py-2 text-sm text-gray-700  hover:text-gray-900">
+          <div className="px-2 my-2">
             <input
-              className="p-2 bg-gray-50 rounded-md -ml-2 mr-auto"
+              className="p-2 text-sm focus:outline-none w-full bg-gray-100 rounded-md"
               placeholder="Add new tag"
               value={newTag}
               onChange={(e) => setNewTag(e.target.value)}
               onKeyDown={(e) => (e.key === "Enter" ? addNewTag() : null)}
             />
-            <button
-              className="px-2 -mr-2 my-auto text-xl w-7 h-7 rounded-full hover:bg-blue-100 bg-blue-50"
-              onClick={addNewTag}
-            >
-              +
-            </button>
           </div>
         </div>
       </div>

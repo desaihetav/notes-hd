@@ -40,6 +40,7 @@ export default function TagSelector({
           aria-haspopup="true"
           aria-expanded="true"
           onClick={toggleDropdown}
+          onBlur={() => setIsDropdownOpen(false)}
         >
           {currentTag}
           <svg
@@ -59,7 +60,7 @@ export default function TagSelector({
       </div>
 
       <div
-        class={`origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 ${
+        class={`absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 ${
           isDropdownOpen ? "block" : "hidden"
         }`}
       >
@@ -69,7 +70,7 @@ export default function TagSelector({
           aria-orientation="vertical"
           aria-labelledby="options-menu"
         >
-          {allTags.map((tag) => (
+          {["No Tag", ...allTags].map((tag) => (
             <button
               class="block text-left px-4 w-full py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-gray-900"
               role="menuitem"

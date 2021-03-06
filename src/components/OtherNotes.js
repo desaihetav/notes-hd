@@ -7,7 +7,7 @@ export default function OtherNotes({
   allTags,
 }) {
   return (
-    <div className="w-full">
+    <div className="w-full mb-8">
       <h2 className="font-bold mt-10 text-gray-800 tracking-wider">OTHERS</h2>
       {filteredNotes.filter((noteItem) => !noteItem.isPinned).length !==
       0 ? null : (

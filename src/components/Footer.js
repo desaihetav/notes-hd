@@ -13,7 +13,7 @@ export default function Footer() {
           className="hover:underline font-medium"
           href="https://www.github.com/desaihetav/keep-clone"
         >
-          /desaihetav/keep-clone
+          / desaihetav / keep-clone
         </a>
       </span>
     </div>
