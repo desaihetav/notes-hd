@@ -44,12 +44,6 @@ export default function NewNote({ allNotes, setAllNotes, allTags }) {
     }
   };
 
-  const getCurrentContent = () => {
-    if (currentContent === "") {
-      return "";
-    }
-  };
-
   return (
     <div
       className={`w-full max-w-lg shadow-mdfull rounded-xl py-3 px-6 ${currentColor}`}
@@ -80,9 +74,7 @@ export default function NewNote({ allNotes, setAllNotes, allTags }) {
         role="textbox"
         onInput={(e) => setCurrentContent(e.target.innerText)}
         className="w-full my-1 text-sm focus:outline-none placeholder-black resize-none content-textarea overflow-auto"
-      >
-        {getCurrentContent()}
-      </div>
+      ></div>
       {isInputActive && (
         <div className="flex flex-col sm:flex-row mt-4 w-full sm:items-center justify-between text-sm text-gray-700">
           <ColorSelectorBar setColor={setCurrentColor} />
