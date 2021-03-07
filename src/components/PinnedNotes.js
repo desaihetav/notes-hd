@@ -19,6 +19,7 @@ export default function PinnedNotes({
           .sort((a, b) => a.createdAt > b.createdAt)
           .map((noteItem) => (
             <NoteCard
+              key={noteItem.id}
               noteItem={noteItem}
               allNotes={allNotes}
               setAllNotes={setAllNotes}

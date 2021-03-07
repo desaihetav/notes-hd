@@ -21,6 +21,7 @@ export default function Header({
         <img
           className={`p-1 mr-2 cursor-pointer rounded-full hover:bg-blue-50 opacity-50`}
           src={search}
+          alt="Search Icon"
         />
         <input
           name="search"

@@ -8,7 +8,6 @@ import bookmark_border from "../assets/bookmark_border.svg";
 export default function NoteCard({ noteItem, allNotes, setAllNotes, allTags }) {
   const [noteTitle, setNoteTitle] = useState(noteItem.title);
   const [noteContent, setNoteContent] = useState(noteItem.content);
-  const noteItemID = noteItem.id;
   let isSaveBtnEnabled = false;
   useSetLocalStorage("allNotes", allNotes);
 
@@ -71,6 +70,7 @@ export default function NoteCard({ noteItem, allNotes, setAllNotes, allTags }) {
             onClick={toggleNotePin}
             className={`p-2 cursor-pointer rounded-full hover:bg-blue-50`}
             src={noteItem.isPinned ? bookmark : bookmark_border}
+            alt={noteItem.isPinned ? "Bookmarked Icon" : "Not Bookmarked Icon"}
           />
         </div>
       </div>
@@ -95,6 +95,7 @@ export default function NoteCard({ noteItem, allNotes, setAllNotes, allTags }) {
             onClick={deleteNote}
             className={`mr-auto w-9 h-9 p-2 -ml-2 cursor-pointer rounded-full hover:bg-blue-50`}
             src={trash}
+            alt="Delete Icon"
           />
           <TagSelector
             allTags={allTags}

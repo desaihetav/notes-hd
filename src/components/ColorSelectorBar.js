@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useSetLocalStorage } from "../hooks";
 
 export default function ColorSelectorBar({
@@ -35,6 +34,7 @@ export default function ColorSelectorBar({
     <div className="flex">
       {colors.map((colorItem) => (
         <div
+          key={colorItem}
           className={`w-6 h-6 rounded-full cursor-pointer mr-2 border border-gray-300 ${colorItem}`}
           onClick={() => updateColor(colorItem)}
         ></div>

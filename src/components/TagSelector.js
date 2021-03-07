@@ -72,6 +72,7 @@ export default function TagSelector({
         >
           {["No Tag", ...allTags].map((tag) => (
             <button
+              key={tag}
               class="block text-left px-4 w-full py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-gray-900"
               role="menuitem"
               onClick={() => updateTag(tag)}

@@ -8,11 +8,12 @@ export default function Footer() {
         <span className="font-semibold">Hetav Desai</span>
       </span>
       <span className="my-4 flex items-center text-gray-800">
-        <img src={github} className="mr-1 w-4 h-4" />
+        <img src={github} className="mr-1 w-4 h-4" alt="GitHub Logo" />
         <a
           className="hover:underline font-medium"
           href="https://www.github.com/desaihetav/notes-hd"
           target="_blank"
+          rel="noreferrer"
         >
           / desaihetav / notes-hd
         </a>

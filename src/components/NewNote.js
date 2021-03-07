@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { v4 } from "uuid";
 import { ColorSelectorBar, TagSelector } from "./index";
 import { useSetLocalStorage } from "../hooks";
@@ -71,6 +71,7 @@ export default function NewNote({ allNotes, setAllNotes, allTags }) {
             }
             className={`p-2 cursor-pointer rounded-full hover:bg-blue-50`}
             src={isCurrentPinned ? bookmark : bookmark_border}
+            alt={isCurrentPinned ? "Bookmarked Icon" : "Not Bookmarked Icon"}
           />
         </div>
       ) : null}

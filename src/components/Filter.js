@@ -67,7 +67,7 @@ export default function Filter({
           aria-labelledby="options-menu"
         >
           {allFilters.map((filter) => (
-            <div className="flex hover:bg-blue-50">
+            <div key={filter} className="flex hover:bg-blue-50">
               <button
                 class="block text-left px-4 w-full py-2 text-sm text-gray-700  hover:text-gray-900"
                 role="menuitem"
