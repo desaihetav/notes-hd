@@ -72,9 +72,12 @@ export default function NewNote({ allNotes, setAllNotes, allTags }) {
       <div
         contentEditable="true"
         role="textbox"
-        onInput={(e) => setCurrentContent(e.target.innerText)}
+        onInputCapture={(e) => setCurrentContent(e.target.innerText)}
         className="w-full my-1 text-sm focus:outline-none placeholder-black resize-none content-textarea overflow-auto"
-      ></div>
+      >
+        {currentContent === "" ? "" : null}
+      </div>
+      <p>{currentContent}</p>
       {isInputActive && (
         <div className="flex flex-col sm:flex-row mt-4 w-full sm:items-center justify-between text-sm text-gray-700">
           <ColorSelectorBar setColor={setCurrentColor} />
