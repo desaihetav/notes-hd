@@ -40,7 +40,6 @@ export default function TagSelector({
           aria-haspopup="true"
           aria-expanded="true"
           onClick={toggleDropdown}
-          onBlur={() => setIsDropdownOpen(false)}
         >
           {currentTag}
           <svg
