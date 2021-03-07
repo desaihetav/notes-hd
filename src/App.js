@@ -15,7 +15,9 @@ function App() {
       createdAt: "2021-02-25T12:55:29.363Z",
     },
   ];
-  const [allNotes, setAllNotes] = useState([]);
+  const [allNotes, setAllNotes] = useState(
+    JSON.parse(localStorage.getItem("allNotes")) || initialNotes
+  );
   const [allTags, setAllTags] = useState(["To-Do", "Reminder"]);
   const [currentFilter, setCurrentFilter] = useState("All Notes");
   const [searchText, setSearchText] = useState("");
@@ -32,17 +34,10 @@ function App() {
     );
   }, [allNotes, searchText, currentFilter]);
 
-  useEffect(() => {
-    const notesFromLS = JSON.parse(localStorage.getItem("allNotes"));
-    if (notesFromLS.length === 0) {
-      setAllNotes(initialNotes);
-    } else {
-      setAllNotes(notesFromLS);
-    }
-  }, []);
-
   return (
-    <div className="App bg-gray-100 w-screen min-h-screen flex flex-col px-4 sm:px-8 mx-auto max-w-7xl items-center">
+    <div
+      className={`App w-screen min-h-screen flex flex-col px-4 sm:px-8 mx-auto max-w-7xl items-center`}
+    >
       <Header
         allTags={allTags}
         setAllTags={setAllTags}
