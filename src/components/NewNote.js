@@ -77,7 +77,6 @@ export default function NewNote({ allNotes, setAllNotes, allTags }) {
       >
         {currentContent === "" ? "" : null}
       </div>
-      <p>{currentContent}</p>
       {isInputActive && (
         <div className="flex flex-col sm:flex-row mt-4 w-full sm:items-center justify-between text-sm text-gray-700">
           <ColorSelectorBar setColor={setCurrentColor} />
