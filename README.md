@@ -4,7 +4,7 @@
     <p>A web application to jot down quick thoughts and organize them using different tags and color codes.</p>
 </div>
 
-## Screenshots | [Live Demo](https://notes-hd.netlify.app/)
+## Screenshots | [Live Demo](https://noteshd-v1.netlify.app/)
 <br/>
 <p align="center">
     <img src="./src/assets/demo.png" alt="musology"/>
