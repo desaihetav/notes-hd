@@ -22,6 +22,7 @@ export default function Filter({
     if (!allTags.find((tag) => tag === newTag)) {
       let allTagsUpdated = [...allTags, newTag];
       setAllTags(allTagsUpdated);
+      localStorage.setItem("allTags", JSON.stringify(allTagsUpdated));
     }
     setNewTag("");
   };

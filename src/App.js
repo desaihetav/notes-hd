@@ -15,10 +15,13 @@ function App() {
       createdAt: "2021-02-25T12:55:29.363Z",
     },
   ];
+  const initialTags = ["To-Do", "Reminder"];
   const [allNotes, setAllNotes] = useState(
     JSON.parse(localStorage.getItem("allNotes")) || initialNotes
   );
-  const [allTags, setAllTags] = useState(["To-Do", "Reminder"]);
+  const [allTags, setAllTags] = useState(
+    JSON.parse(localStorage.getItem("allTags")) || initialTags
+  );
   const [currentFilter, setCurrentFilter] = useState("All Notes");
   const [searchText, setSearchText] = useState("");
   const [filteredNotes, setFilteredNotes] = useState([]);
