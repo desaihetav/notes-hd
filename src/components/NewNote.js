@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { v4 } from "uuid";
 import { ColorSelectorBar, TagSelector } from "./index";
 import { useSetLocalStorage } from "../hooks";
@@ -12,6 +12,7 @@ export default function NewNote({ allNotes, setAllNotes, allTags }) {
   const [currentContent, setCurrentContent] = useState("");
   const [currentColor, setCurrentColor] = useState("bg-white");
   const [currentTag, setCurrentTag] = useState("No Tag");
+  const contentEl = useRef(null);
   useSetLocalStorage("allNotes", allNotes);
 
   const clearCurrent = () => {
@@ -19,6 +20,7 @@ export default function NewNote({ allNotes, setAllNotes, allTags }) {
     setIsCurrentPinned(false);
     setCurrentTitle("");
     setCurrentContent("");
+    contentEl.current.innerText = "";
     setCurrentColor("bg-white");
     setCurrentTag("No Tag");
   };
@@ -49,7 +51,7 @@ export default function NewNote({ allNotes, setAllNotes, allTags }) {
       className={`w-full max-w-lg shadow-mdfull rounded-xl py-3 px-6 ${currentColor}`}
       onFocus={() => setIsInputActive(true)}
     >
-      {isInputActive ? (
+      {isInputActive && (
         <div className="flex items-center">
           <input
             name="title"
@@ -59,24 +61,26 @@ export default function NewNote({ allNotes, setAllNotes, allTags }) {
             onChange={(e) => setCurrentTitle(e.target.value)}
             onFocus={() => setIsInputActive(true)}
           />
-          <img
+          <button
+            className={`p-2 cursor-pointer rounded-full hover:bg-blue-50 focus:ring-2`}
             onClick={() =>
               setIsCurrentPinned((isCurrentPinned) => !isCurrentPinned)
             }
-            className={`p-2 cursor-pointer rounded-full hover:bg-blue-50`}
-            src={isCurrentPinned ? bookmark : bookmark_border}
-            alt={isCurrentPinned ? "Bookmarked Icon" : "Not Bookmarked Icon"}
-          />
+          >
+            <img
+              src={isCurrentPinned ? bookmark : bookmark_border}
+              alt={isCurrentPinned ? "Bookmarked Icon" : "Not Bookmarked Icon"}
+            />
+          </button>
         </div>
-      ) : null}
+      )}
       <div
         contentEditable="true"
         role="textbox"
+        ref={contentEl}
         onInputCapture={(e) => setCurrentContent(e.target.innerText)}
         className="w-full my-1 text-sm focus:outline-none placeholder-black resize-none content-textarea overflow-auto"
-      >
-        {currentContent === "" ? "" : null}
-      </div>
+      ></div>
       {isInputActive && (
         <div className="flex flex-col sm:flex-row mt-4 w-full sm:items-center justify-between text-sm text-gray-700">
           <ColorSelectorBar setColor={setCurrentColor} />
@@ -88,13 +92,13 @@ export default function NewNote({ allNotes, setAllNotes, allTags }) {
             />
             <div className="w-max">
               <button
-                className="ml-4 py-2 w-20 hover:bg-blue-50 hover:text-blue-600 rounded-md font-bold text-sm text-blue-500 duration-300"
+                className="ml-4 py-2 w-20 hover:bg-blue-50 hover:text-blue-600 rounded-md font-bold text-sm text-blue-500 duration-300 focus:ring-2"
                 onClick={clearCurrent}
               >
                 CLEAR
               </button>
               <button
-                className="ml-4 py-2 w-20 bg-blue-500 hover:bg-blue-600 text-white rounded-md font-bold text-sm duration-300"
+                className="ml-4 py-2 w-20 bg-blue-500 hover:bg-blue-600 text-white rounded-md font-bold text-sm duration-300 focus:ring-2"
                 onClick={addNote}
               >
                 ADD

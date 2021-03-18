@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useSetLocalStorage } from "../hooks";
 import { ColorSelectorBar, TagSelector } from "./index";
-import trash from "../assets/trash.svg";
 import bookmark from "../assets/bookmark.svg";
 import bookmark_border from "../assets/bookmark_border.svg";
 
@@ -91,12 +90,12 @@ export default function NoteCard({ noteItem, allNotes, setAllNotes, allTags }) {
           noteItemID={noteItem.id}
         />
         <div className="flex items-center justify-end w-full mt-2">
-          <img
+          <button
             onClick={deleteNote}
             className={`mr-auto w-9 h-9 p-2 -ml-2 cursor-pointer rounded-full hover:bg-blue-50`}
-            src={trash}
-            alt="Delete Icon"
-          />
+          >
+            <span className="material-icons-outlined text-red-500">delete</span>
+          </button>
           <TagSelector
             allTags={allTags}
             noteItemID={noteItem.id}

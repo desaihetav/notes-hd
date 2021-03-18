@@ -68,7 +68,7 @@ export default function Filter({
           aria-labelledby="options-menu"
         >
           {allFilters.map((filter) => (
-            <div key={filter} className="flex hover:bg-blue-50">
+            <div key={filter} className="flex items-center hover:bg-blue-50">
               <button
                 class="block text-left px-4 w-full py-2 text-sm text-gray-700  hover:text-gray-900"
                 role="menuitem"
@@ -77,14 +77,16 @@ export default function Filter({
                 {filter}
               </button>
               <button
-                className="px-2 m-2 rounded-full hover:bg-blue-100 bg-blue-50"
+                className="mx-2 py-1 px-2 w-auto rounded-full flex items-center hover:bg-blue-100 bg-blue-50"
                 onClick={() => removeFilter(filter)}
               >
-                x
+                <span className="material-icons text-sm text-gray-700">
+                  clear
+                </span>
               </button>
             </div>
           ))}
-          <div className="px-2 my-2">
+          <div className="p-2">
             <input
               className="p-2 text-sm focus:outline-none w-full bg-gray-100 rounded-md"
               placeholder="Add new tag"

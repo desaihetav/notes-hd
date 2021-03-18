@@ -6,7 +6,7 @@ function App() {
   const initialNotes = [
     {
       id: v4(),
-      title: "Welcome to Keep Notes",
+      title: "Welcome to NotesHD",
       content:
         "This is a sample note, please feel free to edit or delete this note and get started with creating your own notes!",
       color: "bg-white",
@@ -38,39 +38,41 @@ function App() {
   }, [allNotes, searchText, currentFilter]);
 
   return (
-    <div
-      className={`App w-screen min-h-screen flex flex-col px-4 sm:px-8 mx-auto max-w-7xl items-center`}
-    >
-      <Header
-        allTags={allTags}
-        setAllTags={setAllTags}
-        currentFilter={currentFilter}
-        setCurrentFilter={setCurrentFilter}
-        searchText={searchText}
-        setSearchText={setSearchText}
-      />
+    <div className="">
+      <div
+        className={`App w-screen min-h-screen flex flex-col px-4 sm:px-8 mx-auto max-w-7xl items-center`}
+      >
+        <Header
+          allTags={allTags}
+          setAllTags={setAllTags}
+          currentFilter={currentFilter}
+          setCurrentFilter={setCurrentFilter}
+          searchText={searchText}
+          setSearchText={setSearchText}
+        />
 
-      <NewNote
-        allNotes={allNotes}
-        setAllNotes={setAllNotes}
-        allTags={allTags}
-      />
+        <NewNote
+          allNotes={allNotes}
+          setAllNotes={setAllNotes}
+          allTags={allTags}
+        />
 
-      <PinnedNotes
-        filteredNotes={filteredNotes}
-        allNotes={allNotes}
-        setAllNotes={setAllNotes}
-        allTags={allTags}
-      />
+        <PinnedNotes
+          filteredNotes={filteredNotes}
+          allNotes={allNotes}
+          setAllNotes={setAllNotes}
+          allTags={allTags}
+        />
 
-      <OtherNotes
-        filteredNotes={filteredNotes}
-        allNotes={allNotes}
-        setAllNotes={setAllNotes}
-        allTags={allTags}
-      />
+        <OtherNotes
+          filteredNotes={filteredNotes}
+          allNotes={allNotes}
+          setAllNotes={setAllNotes}
+          allTags={allTags}
+        />
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 }

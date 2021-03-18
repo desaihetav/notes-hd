@@ -33,11 +33,11 @@ export default function ColorSelectorBar({
   return (
     <div className="flex">
       {colors.map((colorItem) => (
-        <div
+        <button
           key={colorItem}
-          className={`w-6 h-6 rounded-full cursor-pointer mr-2 border border-gray-300 ${colorItem}`}
+          className={`w-6 h-6 rounded-full cursor-pointer mr-2 border border-gray-300 ${colorItem} focus:ring-2`}
           onClick={() => updateColor(colorItem)}
-        ></div>
+        ></button>
       ))}
     </div>
   );
